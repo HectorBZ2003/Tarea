@@ -3,25 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operaciones Matemáticas</title>
+    <title>Calculadora</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles-pagina3.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Operaciones Matemáticas</h1>
+            <h1>Calculadora de Operaciones</h1>
         </header>
         
-        <nav>
-            <button class="nav-btn" onclick="window.location.href='index.html'">Página Principal</button>
-            <button class="nav-btn" onclick="window.location.href='pagina2.html'">Galería de Imágenes</button>
-            <button class="nav-btn" onclick="window.location.href='pagina3.html'">Operaciones Matemáticas</button>
-        </nav>
-        
         <main>
-            <div class="operations-container">
-                <table class="operations-table">
+            <div class="table-container">
+                <table>
                     <thead>
                         <tr>
                             <th>OPERACIÓN</th>
@@ -33,24 +26,112 @@
                         <tr>
                             <td>MULTIPLICACIÓN</td>
                             <td>Multiplica 2 números ingresados</td>
-                            <td><button class="calc-btn" onclick="multiplicar()">JS</button></td>
+                            <td><button class="calc-btn" id="btn-multiplicacion">JS</button></td>
                         </tr>
                         <tr>
                             <td>EXPONENTE 2</td>
                             <td>Eleva al cuadrado 1 número ingresado</td>
-                            <td><button class="calc-btn" onclick="elevarCuadrado()">JS</button></td>
+                            <td><button class="calc-btn" id="btn-exponente">JS</button></td>
                         </tr>
                         <tr>
                             <td>RESTA</td>
                             <td>Resta 2 números ingresados</td>
-                            <td><button class="calc-btn" onclick="restar()">JS</button></td>
+                            <td><button class="calc-btn" id="btn-resta">JS</button></td>
+                        </tr>
+                        <tr>
+                            <td>SUMA</td>
+                            <td>Suma 2 números ingresados</td>
+                            <td><button class="calc-btn" id="btn-suma">JS</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            
+            <div id="resultado" class="result-container"></div>
+            
+            <div class="nav-buttons">
+                <button class="nav-btn" id="btn-pagina1">Página Principal</button>
+                <button class="nav-btn" id="btn-pagina2">Galería de Imágenes</button>
+                <button class="nav-btn" id="btn-pagina3">Calculadora</button>
+            </div>
         </main>
     </div>
-
-    <script src="script-pagina3.js"></script>
+    
+    <script src="script.js"></script>
+    <script>
+        // Funcionalidad específica para la página de calculadora
+        document.addEventListener('DOMContentLoaded', function() {
+            // Función para obtener números del usuario
+            function obtenerNumeros(cantidad) {
+                let numeros = [];
+                for(let i = 0; i < cantidad; i++) {
+                    let num = prompt(`Ingresa el ${i+1}º número:`);
+                    if(num === null || isNaN(num)) {
+                        alert('Por favor ingresa un número válido');
+                        return null;
+                    }
+                    numeros.push(parseFloat(num));
+                }
+                return numeros;
+            }
+            
+            // Multiplicación
+            document.getElementById('btn-multiplicacion').addEventListener('click', function() {
+                let numeros = obtenerNumeros(2);
+                if(numeros) {
+                    let resultado = numeros[0] * numeros[1];
+                    document.getElementById('resultado').innerHTML = 
+                        `<h3>Resultado de la Multiplicación:</h3>
+                         <p>${numeros[0]} × ${numeros[1]} = ${resultado}</p>`;
+                }
+            });
+            
+            // Exponente al cuadrado
+            document.getElementById('btn-exponente').addEventListener('click', function() {
+                let numeros = obtenerNumeros(1);
+                if(numeros) {
+                    let resultado = Math.pow(numeros[0], 2);
+                    document.getElementById('resultado').innerHTML = 
+                        `<h3>Resultado del Cuadrado:</h3>
+                         <p>${numeros[0]}² = ${resultado}</p>`;
+                }
+            });
+            
+            // Resta
+            document.getElementById('btn-resta').addEventListener('click', function() {
+                let numeros = obtenerNumeros(2);
+                if(numeros) {
+                    let resultado = numeros[0] - numeros[1];
+                    document.getElementById('resultado').innerHTML = 
+                        `<h3>Resultado de la Resta:</h3>
+                         <p>${numeros[0]} - ${numeros[1]} = ${resultado}</p>`;
+                }
+            });
+            
+            // Suma (añadida como extra)
+            document.getElementById('btn-suma').addEventListener('click', function() {
+                let numeros = obtenerNumeros(2);
+                if(numeros) {
+                    let resultado = numeros[0] + numeros[1];
+                    document.getElementById('resultado').innerHTML = 
+                        `<h3>Resultado de la Suma:</h3>
+                         <p>${numeros[0]} + ${numeros[1]} = ${resultado}</p>`;
+                }
+            });
+            
+            // Navegación entre páginas
+            document.getElementById('btn-pagina1').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+            
+            document.getElementById('btn-pagina2').addEventListener('click', function() {
+                window.location.href = 'pagina2.html';
+            });
+            
+            document.getElementById('btn-pagina3').addEventListener('click', function() {
+                window.location.href = 'pagina3.html';
+            });
+        });
+    </script>
 </body>
 </html>
