@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,50 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería de Imágenes</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles-pagina2.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Galería de Imágenes</h1>
+            <h1>Galería de Imágenes Animadas</h1>
+            <div id="age-message"></div>
         </header>
         
-        <nav>
-            <button class="nav-btn" onclick="window.location.href='index.html'">Página Principal</button>
-            <button class="nav-btn" onclick="window.location.href='pagina2.html'">Galería de Imágenes</button>
-            <button class="nav-btn" onclick="window.location.href='pagina3.html'">Operaciones Matemáticas</button>
-        </nav>
-        
         <main>
-            <div class="age-message" id="age-message">
-                <!-- Mensaje sobre la edad aparecerá aquí -->
+            <div class="gallery">
+                <div class="gallery-item rotate">
+                    <img src="https://picsum.photos/300/200?random=1" alt="Imagen 1">
+                    <div class="image-caption">Rotación</div>
+                </div>
+                <div class="gallery-item bounce">
+                    <img src="https://picsum.photos/300/200?random=2" alt="Imagen 2">
+                    <div class="image-caption">Rebote</div>
+                </div>
+                <div class="gallery-item zoom">
+                    <img src="https://picsum.photos/300/200?random=3" alt="Imagen 3">
+                    <div class="image-caption">Zoom</div>
+                </div>
+                <div class="gallery-item fade">
+                    <img src="https://picsum.photos/300/200?random=4" alt="Imagen 4">
+                    <div class="image-caption">Desvanecimiento</div>
+                </div>
+                <div class="gallery-item slide">
+                    <img src="https://picsum.photos/300/200?random=5" alt="Imagen 5">
+                    <div class="image-caption">Deslizamiento</div>
+                </div>
             </div>
             
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/600x400?nature" alt="Imagen de naturaleza">
-                    <div class="image-info">Rotación</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/600x400?city" alt="Imagen de ciudad">
-                    <div class="image-info">Pulso</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/600x400?technology" alt="Imagen de tecnología">
-                    <div class="image-info">Rebote</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/600x400?art" alt="Imagen de arte">
-                    <div class="image-info">Sacudida</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/600x400?architecture" alt="Imagen de arquitectura">
-                    <div class="image-info">Volteo</div>
-                </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" id="btn-pagina1">Página Principal</button>
+                <button class="nav-btn" id="btn-pagina2">Galería de Imágenes</button>
+                <button class="nav-btn" id="btn-pagina3">Calculadora</button>
             </div>
         </main>
     </div>
-
-    <script src="script-pagina2.js"></script>
+    
+    <script src="script.js"></script>
+    <script>
+        // Funcionalidad específica para la página de galería
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mensaje de bienvenida
+            alert('¡Bienvenido a la Galería de Imágenes!');
+            
+            // Preguntar por la edad
+            let userAge = prompt('Por favor, ingresa tu edad:');
+            
+            // Verificar la edad y mostrar mensaje
+            if(userAge && !isNaN(userAge)) {
+                let age = parseInt(userAge);
+                let message = age > 20 ? 
+                    'Eres mayor de 20 años. ¡Bienvenido!' : 
+                    'Eres menor o igual a 20 años. ¡Bienvenido!';
+                
+                document.getElementById('age-message').textContent = message;
+                alert(message);
+            } else {
+                document.getElementById('age-message').textContent = 'No ingresaste una edad válida';
+            }
+            
+            // Navegación entre páginas
+            document.getElementById('btn-pagina1').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+            
+            document.getElementById('btn-pagina2').addEventListener('click', function() {
+                window.location.href = 'pagina2.html';
+            });
+            
+            document.getElementById('btn-pagina3').addEventListener('click', function() {
+                window.location.href = 'pagina3.html';
+            });
+        });
+    </script>
 </body>
 </html>
