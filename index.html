@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mi Sitio Web Interactivo</h1>
+        </header>
+        
+        <nav>
+            <button class="nav-btn" onclick="window.location.href='index.html'">Página Principal</button>
+            <button class="nav-btn" onclick="window.location.href='pagina2.html'">Galería de Imágenes</button>
+            <button class="nav-btn" onclick="window.location.href='pagina3.html'">Operaciones Matemáticas</button>
+        </nav>
+        
+        <main>
+            <div class="welcome-message">
+                ¡Hola, <span id="user-name-display" class="user-name">Usuario</span>! Bienvenido a nuestro sitio web interactivo.
+            </div>
+            
+            <div class="description">
+                <h2>Descripción de las páginas:</h2>
+                <div class="page-description">
+                    <h3>Página Principal</h3>
+                    <p>Esta es la página de inicio donde podrás encontrar información general sobre el sitio y navegar a las demás secciones.</p>
+                </div>
+                
+                <div class="page-description">
+                    <h3>Galería de Imágenes</h3>
+                    <p>En esta sección encontrarás una colección de imágenes con animaciones interactivas. Cada imagen tiene un efecto diferente al pasar el cursor sobre ella.</p>
+                </div>
+                
+                <div class="page-description">
+                    <h3>Operaciones Matemáticas</h3>
+                    <p>Esta página contiene una tabla con diferentes operaciones matemáticas que puedes realizar. Solo necesitas hacer clic en el botón correspondiente y seguir las instrucciones.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script-pagina1.js"></script>
+</body>
+</html>
